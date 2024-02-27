@@ -8,11 +8,13 @@ Your task is to write a function that lets the user know if they attempt to perf
 
 You are given an integer time limit, a list of payments as a 2D array of [senderID, receiverID] pairs, and a sorted integer array of timestamps representing the time at which each payment was performed.
 
-Your function should return a collection of strings, one for each payment, stating whether the payment could be an accidental payment to the same receiver or not. The string "true" represents an attempted new payment to the same user before the time limit, the string "false" represents a payment that has no issues.
+Your function should return a collection of strings, one for each payment, stating whether the payment could be an accidental payment to the same receiver or not. 
+The string "true" represents an attempted new payment to the same user before the time limit, the string "false" represents a payment that has no issues.
 
 Here are the details of the requirements:
 
-- If the time difference between the current payment and the last payment made to the same receiver is strictly less than the time limit seconds, the function should return "true".
+- If the time difference between the current payment and the last payment made to the same receiver is strictly less than the time limit seconds, 
+the function should return "true".
 - The payments are given as a 2D array payments , where each element is a pair [senderID, receiverID]. 
 - The corresponding timestamp for each payment is given in the timestamps array, which is sorted in ascending order.
 - Use the senderID and receiverID to uniquely identify a payment.

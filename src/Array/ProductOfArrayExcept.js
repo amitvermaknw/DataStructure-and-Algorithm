@@ -19,18 +19,19 @@ Output: [0,0,9,0,0]
 var productExceptSelf = function (nums) {
     let res = new Array(nums.length);
     res.fill(1);
-    let prefix = 1;
 
+    // Calculate the product of elements before the current index
+    let pre = 1;
     for (let i = 0; i < nums.length; i++) {
-        res[i] *= prefix;
-        prefix *= nums[i];
+        res[i] = res[i] * pre;
+        pre = pre * nums[i];
     }
 
-    let postfix = 1;
-
+    // Calculate the product of elements after the current index
+    let post = 1;
     for (let i = nums.length - 1; i >= 0; i--) {
-        res[i] *= postfix;
-        postfix *= nums[i];
+        res[i] = res[i] * post;
+        post = post * nums[i];
     }
 
     return res;

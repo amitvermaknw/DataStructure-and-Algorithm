@@ -22,12 +22,14 @@ Output: 1
 
 var lengthOfLIS = function (nums) {
     let LIS = new Array(nums.length).fill(1);
-    for (let i = nums.length - 1; i >= 0; i--) {
-        for (let j = i + 1; j < nums.length; j++) {
-            if (nums[i] < nums[j]) {
-                LIS[i] = Math.max(LIS[i], 1 + LIS[j]);
+    for (let i = 1; i < nums.length; i++) {
+        for (let j = 0; j < i; j++) {
+            if (nums[i] > nums[j]) {
+                dp[i] = Math.max(dp[i], 1 + dp[j])
             }
         }
     }
-    return Math.max.apply(null, LIS);
+
+    return Math.max(...dp)
+    //return Math.max.apply(null, LIS);
 };

@@ -12,13 +12,13 @@ Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
  */
 
 let twoSum = function (nums, target) {
-    let hashMap = {};
-    for (let index = 0; index < nums.length; index++) {
-        let diff = target - nums[index];
-        if (diff in hashMap) {
-            return [hashMap[diff], index];
+    let map = new Map
+    for (let i = 0; i < nums.length; i++) {
+        let diff = target - nums[i]
+        if (map.has(diff)) {
+            return [i, map.get(diff)]
         } else {
-            hashMap[nums[index]] = index;
+            map.set(nums[i], i)
         }
     }
 };

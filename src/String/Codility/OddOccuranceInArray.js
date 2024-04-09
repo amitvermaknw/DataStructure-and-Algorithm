@@ -35,3 +35,28 @@ function solution(A) {
 }
 
 console.log(solution([9, 3, 9, 3, 9, 7, 9]));
+
+//My solution 
+function solution(a) {
+  let map = new Map
+  let count = 0
+
+  for (let i = 0; i < a.length; i++) {
+    for (let j = 0; j < a.length; j++) {
+      if (a[i] == a[j]) {
+        count++
+      }
+    }
+    map.set(a[i], count);
+    count = 0
+  }
+
+  for (let [key, value] of map) {
+    if (value % 2 !== 0) {
+      return key
+    }
+  }
+}
+
+console.log(solution([9, 3, 9, 3, 9, 7, 9]))
+

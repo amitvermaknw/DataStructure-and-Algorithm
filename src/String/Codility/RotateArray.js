@@ -37,3 +37,14 @@ function solution(A, K) {
     return temArr;
 }
 console.log("result", solution([3, 8, 9, 7, 6], 3));
+
+//my solution
+var solution = function (arr, k) {
+    for (let i = 0; i < k; i++) {
+        let val = arr.pop();
+        arr.unshift(val)
+    }
+    return arr
+};
+
+console.log(solution([3, 8, 9, 7, 6], 3))

@@ -27,9 +27,9 @@ function findMaxPath(mat) {
     //Find max value in first row of matrix
 
     let res = -1;
-    for (let i = 0; i < col; i++) {     //col because loop has to run 6 times in first row
-        res = Math.max(res, mat[0][i]);
-    }
+    // for (let i = 0; i < col; i++) {     //col because loop has to run 6 times in first row
+    //     res = Math.max(res, mat[0][i]);
+    // }
 
     for (let i = 1; i < row; i++) {
         res = -1;

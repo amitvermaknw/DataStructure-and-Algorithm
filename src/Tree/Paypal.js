@@ -77,58 +77,68 @@ n: the number of payments
 // more then timelimits.
 
 
-const timestamps_1 = [1, 4, 5, 10, 11, 14]
-const payments_1 = [[1, 2], [25, 65], [25, 65], [1, 2], [25, 65], [1, 2]]
-const timelimit_1 = 5
+//const timestamps_1 = [1, 4, 5, 10, 11, 14]
+//const payments_1 = [[1, 2], [25, 65], [25, 65], [1, 2], [25, 65], [1, 2]]
+//const timelimit_1 = 5
 
 
-function checkTimeLimits(timeStamp, payments_trans, timeLimit) {
-    let hasMap = {};
-    let sender = new Set(), receiver = new Set();
-    let result = [];
-    for (let i = 0; i < payments_trans.length; i++) {
-        payments_trans[i].map((a, b) => {
-            if (sender.has(a) && receiver.has(b)) {
-                let currentTime = timeStamp[i];
+function validatePayments(timestamps, payments, timelimit) {
+    // Create a map to store the last payment time for each sender-receiver pair
+    const lastPaymentTime = new Map();
 
-                let newArr = Array.from(sender);
-                console.log("newArr", newArr);
-                console.log("a", a);
-
-                let timeStampIndex = newArr.indexOf(a);
-                let diffTime = Math.abs(currentTime - timeStamp[timeStampIndex]);
-
-                if (timeLimit - diffTime >= 5) {
-                    result.push(false);
-                } else {
-                    result.push(true);
-                }
-            } else {
-                sender.add(a);
-                receiver.add(b);
+    // Function to check if a payment is within the time limit
+    function isWithinTimeLimit(sender, receiver, currentTimestamp) {
+        const key = `${sender}-${receiver}`;
+        if (lastPaymentTime.has(key)) {
+            const lastTime = lastPaymentTime.get(key);
+            if (currentTimestamp - lastTime < timelimit) {
+                return true; // Payment within time limit
             }
-        })
+        }
+        lastPaymentTime.set(key, currentTimestamp);
+        return false; // Payment not within time limit
     }
-    console.log("result", result);
+
+    // Array to store the results
+    const results = [];
+
+    // Iterate through the payments
+    for (let i = 0; i < payments.length; i++) {
+        const [sender, receiver] = payments[i];
+        const currentTimestamp = timestamps[i];
+        const result = isWithinTimeLimit(sender, receiver, currentTimestamp);
+        results.push(result ? "true" : "false");
+    }
+
+    return results;
 }
 
-checkTimeLimits(timestamps_1, payments_1, timelimit_1);
+// Test cases
+const timestamps_1 = [1, 4, 5, 10, 11, 14];
+const payments_1 = [[1, 2], [25, 65], [25, 65], [1, 2], [25, 65], [1, 2]];
+const timelimit_1 = 5;
+console.log(validatePayments(timestamps_1, payments_1, timelimit_1));
+
+/**
+This validatePayments function works as follows:
+It creates a lastPaymentTime map to store the last payment time for each sender-receiver pair.
+It defines a helper function isWithinTimeLimit to check if a payment is within the time limit for a given sender, receiver, and current timestamp.
+It iterates through the payments, checks if each payment is within the time limit, and stores the result in an array.
+Finally, it returns the array of results.
+ */
 
 
 
 
+/*const timestamps_2 = [1, 1, 1, 11];
+const payments_2 = [[1, 2], [1, 2], [25, 35], [1, 2]];
+const timelimit_2 = 5;
+console.log(validatePayments(timestamps_2, payments_2, timelimit_2));
 
-
-
-
-
-
-
-
-
-
-
-
+const timestamps_3 = [1];
+const payments_3 = [[1, 2]];
+const timelimit_3 = 5;
+console.log(validatePayments(timestamps_3, payments_3, timelimit_3));*/
 
 
 const timestamps_2 = [1, 1, 1, 11]

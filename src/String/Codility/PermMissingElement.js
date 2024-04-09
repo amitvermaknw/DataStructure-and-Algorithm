@@ -33,4 +33,15 @@ function solution(A) {
     }
 }
 
-//Ecommerce system design need to check
+//My solution
+function solution(a) {
+    let sort = a.sort((a, b) => a - b)
+
+    for (let i = 0; i < sort.length; i++) {
+        if (sort[i] + 1 !== sort[i + 1]) {
+            return sort[i] + 1
+        }
+    }
+}
+
+console.log(solution([2, 3, 1, 5]))

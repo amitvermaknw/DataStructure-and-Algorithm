@@ -32,3 +32,16 @@ function solution(X, Y, D) {
         return distance + 1;
     }
 }
+
+/**
+ * My solution 
+ */
+
+function solution(x, y, d) {
+    let count = 0
+    while (x <= y) {
+        x = x + d
+        count++
+    }
+    return count
+}

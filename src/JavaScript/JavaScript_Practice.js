@@ -1,24 +1,3 @@
-//Confirm the ending
-//https://forum.freecodecamp.org/t/freecodecamp-challenge-guide-confirm-the-ending/16006
-
-//Find the longest word
-const longestWord = (str) => {
-    let wordArr = str.split(' ');
-    wordArr.sort((a, b) => a.length - b.length);
-    return wordArr[wordArr.length - 1]
-};
-
-longestWord("What if we try a super-long word such as otorhinolaryngology");
-
-//Factorial -
-
-function factorialize(num) {
-    if (num === 0) {
-        return 1;
-    }
-    return num * factorialize(num - 1);
-}
-factorialize(5);
 
 //Return an array consisting of the largest number from each provided sub - array.For simplicity, the provided array will contain exactly 4 sub - arrays.
 function largestOfFour(arr) {
@@ -108,71 +87,6 @@ printA(); //undefined
 
 //There are only six falsey values in JavaScript: undefined, null, NaN, 0, "" (empty string), and false of course.
 //The var keyword behaves differently in function scopes and block scopes.
-
-//Add Two digit
-
-var counter = 0;
-function addDigit(n) {
-    if (n === 0) {
-        console.log(counter)
-    }
-    counter = counter + Math.floor(n % 10);
-    n = Math.floor(n / 10);
-    addDigit(n)
-}
-
-addDigit(123);
-
-//Larget integer in array with positive and negative
-function findMax(arr) {
-    let maxVal = 0;
-    for (let i = 0; i < arr.length; i++) {
-        if ((Math.abs(arr[i]) > maxVal) && (arr.indexOf(-arr[i]) !== -1)) {
-            maxVal = arr[i];
-        }
-    }
-
-    return maxVal;
-}
-
-// Driver Code
-let arr = [3, 2, -2, 5, -3];
-console.log(findMax(arr));
-
-//Implement map method
-Array.prototype.myMap = function (callback) {
-    let arr = [];
-    for (let i = 0; i < this.length; i++) {
-        arr.push(callback(this[i]));
-    }
-    return arr;
-}
-let a = [2, 4, 3].myMap(item => item * 4)
-console.log("a=", a);
-
-//filter method implementation
-Array.prototype.myFilter = function (callback) {
-    let item = [];
-    for (let i = 0; i < this.length; i++) {
-        if (callback(this[i]) === this[i]) {
-            item.push(this[i]);
-        }
-    }
-    return item;
-}
-let a = [2, 4, 3].myFilter(item => item === 2 ? item : null);
-console.log("a=", a);
-
-//Reduce method
-Array.prototype.myReduce = function (callback) {
-    let item = 0;
-    for (let i = 0; i < this.length; i++) {
-        item = callback(item, this[i]);
-    }
-    return item;
-}
-let a = [2, 4, 3].myReduce((total, a) => total + a);
-console.log("a=", a);
 
 //memoization
 function memoizedAddTo256() {

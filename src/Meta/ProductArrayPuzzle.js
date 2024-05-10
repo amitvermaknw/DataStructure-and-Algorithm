@@ -35,7 +35,6 @@ function productExceptSelf(nums, n) {
             if (count !== i) {
                 product = product * nums[i]
             }
-            console.log("product", product)
         }
         result.push(product);
         product = 1;

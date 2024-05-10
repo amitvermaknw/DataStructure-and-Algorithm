@@ -23,6 +23,9 @@ n = 7 , k = 100
 a[] = {1, 9, 2, 8, 6, 4, 3}
 Output:
 16
+
+Time complexity = O(n^2)
+spance complexity O(n^2) because of two array
  */
 
 function countSubArrayProductLessThanK(a, n, k) {

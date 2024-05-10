@@ -39,6 +39,9 @@ In the first case, the cafeteria table has N=10 seats,
  Three additional diners may sit at seats 4, 8, and 10 without violating the social distancing guidelines. 
  In the second case, only 1 additional diner is able to join the table, by sitting in any of the first 3 seats.
  * 
+
+ Time complexity = O(Nlogn)
+ space complexity = O(1)
  */
 
 function getMaxAdditionalDinersCount(N, K, M, S) {

@@ -23,7 +23,12 @@ Example 3:
 Input: prices = [7,6,4,3,1]
 Output: 0
 Explanation: In this case, no transaction is done, i.e. max profit = 0.
- */
+ 
+Time Complexity - O(n)
+spance complexity - O(n)
+
+*/
+
 
 //Solved using dynamic programing
 var maxProfit = function (prices) {

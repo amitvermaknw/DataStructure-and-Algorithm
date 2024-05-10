@@ -144,22 +144,7 @@ let y = function () { //this is statement
 }
 //if x is passed to function y then it become expression
 
-//Debounce concept in javascript
-//< button id = "myBtn" > click me</button>
-const debounce = (fn, delayed) => {
-    let funTimeoutId;
-    return function (...arg) {
-        if (funTimeoutId) {
-            clearTimeout(funTimeoutId);
-        }
-        funTimeoutId = setTimeout(() => {
-            fn(...arg)
-        }, delayed)
-    }
-}
-document.getElementById("myBtn").addEventListener("click", debounce(() => {
-    console.log("clicked me")
-}, 2000))
+
 
 //null type is object and undefine type is undefined.
 //If we declare variable javascript assign value undefined auto
@@ -330,53 +315,6 @@ console.log(parsed); // 42
 const hex2 = (42).toString(16);
 console.log(hex2); // "2a"
 
-//fibonacci series
-
-let cache = {};
-const fibonacci = n => {
-    if (n <= 1) {
-        return n;
-    }
-
-    if (cache[n]) {
-        return cache[n];
-    }
-
-    const result = fibonacci(n - 1) + fibonacci(n - 2);
-    cache[n] = result;
-    return result;
-};
-fibonacci(5)
-console.log('cache=', cache)
-
-//Prime number 
-function primeNumber(number) {
-
-    // check if number is equal to 1
-    if (number === 1) {
-        console.log("1 is neither prime nor composite number.");
-    }
-
-    // check if number is greater than 1
-    else if (number > 1) {
-
-        // looping through 2 to number-1
-        for (let i = 2; i < number; i++) {
-            if (number % i == 0) {
-                isPrime = false;
-                break;
-            }
-        }
-
-        if (isPrime) {
-            console.log(`${number} is a prime number`);
-        } else {
-            console.log(`${number} is a not prime number`);
-        }
-    } else {
-        console.log("The number is not a prime number.");
-    }
-}
 
 //use strict 
 //https://www.programiz.com/javascript/use-strict

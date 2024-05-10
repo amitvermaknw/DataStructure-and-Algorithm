@@ -1,4 +1,4 @@
-//Binary search
+//Binary search in array
 
 let arr = [4, 2, 1, 6, 7, 5];
 arr = arr.sort((a, b) => a - b);

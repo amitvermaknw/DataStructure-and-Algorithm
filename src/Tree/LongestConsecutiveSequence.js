@@ -9,6 +9,7 @@ class Node {
 }
 
 let maxLen = 0;
+let currentLen = 0;
 
 function searchLongestConsecutiveSquence(root, currentLen, expected) {
     if (root === null) {

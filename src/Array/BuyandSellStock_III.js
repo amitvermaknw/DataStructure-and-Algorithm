@@ -45,3 +45,25 @@ var maxProfit = function (prices) {
     }
     return dp.pop();
 };
+
+
+//first buy->first sell --> second buy->second sell
+
+function maxProfit(prices) {
+    let fb = Number.MIN_SAFE_INTEGER;  //Negative integer number
+    let sb = Number.MIN_SAFE_INTEGER; ////Negative integer number
+    let fs = 0;
+    let ss = 0;
+
+    for (let i = 0; i < prices.length; i++) {
+        fb = Math.max(fb, -prices[i]);
+        fs = Math.max(fs, fb + prices[i]);
+
+        sb = Math.max(sb, fs - prices[i]);
+        ss = Math.max(ss, sb + prices[i]);
+    }
+
+    return ss;
+}
+
+console.log(maxProfit([1, 2, 3, 4, 5]))

@@ -24,9 +24,9 @@ const longestOnes = function (nums, k) {
     let numZero = 0;
     let windowLength = 0;
 
-    for (let i = 0; i < nums.length; i++) {
+    for (let right = 0; i < nums.length; right++) {
 
-        if (nums[i] === 0) {
+        if (nums[right] === 0) {
             numZero += 1;
         }
 
@@ -37,7 +37,7 @@ const longestOnes = function (nums, k) {
             left++;
         }
 
-        windowLength = i - left + 1;
+        windowLength = right - left + 1;
 
         maxLen = Math.max(maxLen, windowLength);
     }

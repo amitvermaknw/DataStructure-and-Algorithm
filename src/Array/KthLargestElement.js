@@ -47,3 +47,13 @@ var findKthLargest = function (nums, k) {
     }
     return Math.max(...num2)
 };
+
+//=======================================
+var findKthLargest = function (nums, k) {
+    let largestEle = 0;
+    for (let i = 1; i < k; i++) {
+        largestEle = Math.max(...nums);
+        nums.splice(nums.indexOf(largestEle), 1);
+    }
+    return Math.max(...nums);
+}

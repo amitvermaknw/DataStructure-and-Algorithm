@@ -21,19 +21,19 @@ Explanation: No triplet with zero sum exists.
 function findTriplets(arr, n) {
     arr.sort((a, b) => a - b)
     for (let i = 0; i < arr.length; i++) {
-        let j = i + 1;
-        let k = arr.length - 1;
-        while (j < k) {
-            let sum = arr[i] + arr[j] + arr[k];
+        let left = i + 1, right = arr.length - 1;
+
+        while (left < right) {
+            let sum = arr[i] + arr[left] + arr[right]
             if (sum === 0) {
                 return 1
             } else if (sum < 0) {
-                j++;
+                left++
             } else {
-                k--
+                right--
             }
+
         }
     }
-
-    return 0
+    return 0;
 }

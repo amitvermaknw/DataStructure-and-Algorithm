@@ -16,6 +16,33 @@ Output: 4
 
 //Quick sort - https://www.youtube.com/watch?v=XEmy13g1Qxc&ab_channel=NeetCode
 
+
+//Using quick sort 
+function QuickSort(arr) {
+    if (arr.length <= 1) return arr
+
+    let pivot = arr[arr.length - 1]
+    let left = []
+    let right = []
+
+    for (let i = 0; i < arr.length - 1; i++) {
+        if (arr[i] < pivot) {
+            left.push(arr[i])
+        } else {
+            right.push(arr[i])
+        }
+    }
+    return [...QuickSort(left), pivot, ...QuickSort(right)]
+}
+
+function kthLargest(arr, k) {
+    if (!Array.isArray(arr) || k <= 0 || k > arr.length) return undefined;
+    const sorted = general(arr);
+    return sorted[sorted.length - k];
+}
+
+
+
 var findKthLargest = function (nums, k) {
     k = nums.length - k;
 

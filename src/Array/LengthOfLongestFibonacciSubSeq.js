@@ -23,22 +23,25 @@ Explanation: The longest subsequence that is fibonacci-like: [1,11,12], [3,11,14
  */
 
 var lenLongestFibSubseq = function (arr) {
-    let ans = 2;
     let newSet = new Set(arr)
-
+    let maxlength = 0
     for (let i = 0; i < arr.length; i++) {
         for (let j = i + 1; j < arr.length; j++) {
-            let a = arr[i], b = arr[j], len = 2
+            let a = arr[i]
+            let b = arr[j]
+            let length = 2
             while (newSet.has(a + b)) {
-                len++;
-                let temp = a + b;
-                a = b;
+                let temp = a + b
+                a = b
                 b = temp
+                length++
             }
 
-            ans = Math.max(len, ans)
+            if (length >= 3) {
+                maxlength = Math.max(maxlength, length)
+            }
         }
     }
 
-    return ans == 2 ? 0 : ans
+    return maxlength >= 3 ? maxlength : 0
 };

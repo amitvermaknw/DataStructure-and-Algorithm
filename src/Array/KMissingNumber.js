@@ -17,6 +17,20 @@ Explanation: The missing positive integers are [5,6,7,...]. The 2nd missing posi
 
  */
 
+function findKthPositive(arr, k) {
+    let newSet = new Set(arr);
+    let count = 0;
+    let num = 1;
+
+    while (true) {
+        if (!newSet.has(num)) {
+            count++;
+            if (count === k) return num; // Found k-th missing
+        }
+        num++;
+    }
+}
+
 var findKthPositive = function (arr, k) {
     let missingNum = [];
     for (let i = 0; i < arr[arr.length - 1] + k; i++) {

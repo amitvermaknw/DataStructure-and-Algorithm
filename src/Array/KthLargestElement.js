@@ -37,7 +37,7 @@ function QuickSort(arr) {
 
 function kthLargest(arr, k) {
     if (!Array.isArray(arr) || k <= 0 || k > arr.length) return undefined;
-    const sorted = general(arr);
+    const sorted = QuickSort(arr);
     return sorted[sorted.length - k];
 }
 

@@ -6,7 +6,7 @@ const fibonacci = n => {
         return n;
     }
 
-    if (cache[n]) {
+    if (n in cache) {
         return cache[n];
     }
 

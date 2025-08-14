@@ -31,30 +31,27 @@ word consists only of lowercase English letters.
 forbidden[i] consists only of lowercase English letters.
  */
 
-var longestValidSubstring = function (word, forbidden) {
-    let forbiddenSet = new Set();
-    for (let i = 0; i < forbidden.length; i++) {
-        forbiddenSet.add(forbidden[i]);
-    }
+function longestValidSubstring(word, forbidden) {
+    const forbiddenSet = new Set(forbidden);
+    const maxForbiddenLen = Math.max(...forbidden.map(f => f.length));
 
-    let n = word.length;
-    let left = n - 1, right = n - 1
-    let maxLength = 0;
+    let left = 0;
+    let maxLen = 0;
 
-    while (left > -1) {
-        for (let i = left; i <= Math.min(right, left + 9); i++) {
-            let substr = word.substring(left, i + 1)
-            console.log("substr", substr);
-
-            if (forbiddenSet.has(substr)) {
-                right = i - 1;
+    for (let right = 0; right < word.length; right++) {
+        // Check substrings ending at right up to max forbidden length
+        for (let length = 1; length <= maxForbiddenLen && length <= right - left + 1; length++) {
+            let sub = word.substring(right - length + 1, right + 1);
+            if (forbiddenSet.has(sub)) {
+                // Move left pointer past the start of this forbidden substring
+                left = Math.max(left, right - length + 2);
                 break;
             }
         }
-        maxLength = Math.max(maxLength, right - left-- + 1)
+        maxLen = Math.max(maxLen, right - left + 1);
     }
 
-    return maxLength;
-};
+    return maxLen;
+}
 
 console.log("longestValidSubstring=", longestValidSubstring("cbaaaabc", ["aaa", "cb"]));

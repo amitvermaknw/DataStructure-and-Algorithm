@@ -46,9 +46,7 @@ var minimizedMaximum = function (n, quantities) {
         let storeCover = 0;
 
         for (let i = 0; i < quantities.length; i++) {
-            console.log("quantities=", quantities[i]);
             storeCover += Math.ceil(quantities[i] / mid);
-            console.log("storeCover=", storeCover);
         }
 
         if (storeCover <= n) {

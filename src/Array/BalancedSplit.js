@@ -41,30 +41,3 @@ function balancedSplitExists(arr) {
 
     return false;
 }
-
-
-
-/**
- * In this approach first calculate the total number 
- * and then extract left number from total to get right number
- */
-function balancedSplitExists(arr) {
-    arr.sort((a, b) => a - b)
-
-    let totalSum = 0;
-    for (let i = 0; i < arr.length; i++) {
-        totalSum += arr[i]
-    }
-
-    let leftSum = 0;
-    for (let i = 0; i < arr.length; i++) {
-        let rightSum = totalSum - leftSum;
-        if (rightSum == leftSum) {
-            if (arr[i] > arr[i - 1]) //this is needed because it says A are smaller than all integers in B
-                return true
-        }
-        leftSum += arr[i]
-    }
-
-    return false
-} 

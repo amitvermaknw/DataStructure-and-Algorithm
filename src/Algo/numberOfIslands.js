@@ -42,7 +42,7 @@ var numIslands = function (grid) {
 
                 if (ndx >= 0 && ndy >= 0 && ndx < row && ndy < col && grid[ndx][ndy] == "1") {
                     queue.push([ndx, ndy])
-                    grid[ndx][ndy] = "0"
+                    grid[ndx][ndy] = "0"  //I have already visited this land
                 }
             }
         }

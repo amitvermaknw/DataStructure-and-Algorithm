@@ -38,8 +38,8 @@ function solution(a) {
     let sort = a.sort((a, b) => a - b)
 
     for (let i = 0; i < sort.length; i++) {
-        if (sort[i] + 1 !== sort[i + 1]) {
-            return sort[i] + 1
+        if (sort[i] !== i + 1) {
+            return i + 1
         }
     }
 }

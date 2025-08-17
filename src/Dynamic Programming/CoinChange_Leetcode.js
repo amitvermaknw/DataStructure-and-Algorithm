@@ -34,3 +34,24 @@ var coinChange = function (coins, amount) {
 };
 
 console.log("result", coinChange([1, 2, 5], 11));
+
+
+//Without DP, using BFS 
+function general(coins, amount) {
+    let queue = [[amount, 0]]
+    let set = new Set([amount])
+
+    while (queue.length > 0) {
+        let [current, steps] = queue.shift();
+        for (let coin of coins) {
+            let next = current - coin
+            if (next === 0) return steps + 1
+            if (next > 0 && !set.has(next)) {
+                set.add(next)
+                queue.push([next, steps + 1])
+            }
+        }
+    }
+
+    return steps
+}

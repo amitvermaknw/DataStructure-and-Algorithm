@@ -28,21 +28,6 @@ Time Complexity - O(n)
 spance complexity - O(n)
 
 */
-//Solved using normal buy and sell trick 
-function maxProfit(nums) {
-    let fb = Infinity, sb = Infinity, fs = 0, ss = 0
-
-    for (let p of nums) {
-        fb = Math.min(fb, p)
-        fs = Math.max(fs, p - fb)  // when you sell then you make profile on = sale price- buy price
-
-        sb = Math.min(sb, p - fs)  // for second buy your profit will reduce because you use the same money
-        ss = Math.max(ss, p - sb)
-    }
-
-    console.log(ss)
-}
-
 
 
 //Solved using dynamic programing

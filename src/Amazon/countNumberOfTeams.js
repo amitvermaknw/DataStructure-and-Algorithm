@@ -26,31 +26,33 @@ Output: 4
 
 var numTeams = function (rating) {
 
-    let n = rating.length;
-    let count = 0;
+    let result = 0;
 
-    for (let j = 0; j < n; j++) {
-        let leftSmaller = 0, leftGreater = 0;
-        let rightSmaller = 0, rightGreater = 0;
+    for (let i = 1; i < rating.length - 1; i++) {
+        let rs = 0, rl = 0, ls = 0, ll = 0;
 
-        // Count soldiers before j
-        for (let i = 0; i < j; i++) {
-            if (rating[i] < rating[j]) leftSmaller++;
-            else leftGreater++;
+        for (let j = 0; j < i; j++) {
+            if (rating[j] < rating[i]) {
+                ls++
+            }
+            if (rating[j] > rating[i]) {
+                ll++
+            }
         }
 
-        // Count soldiers after j
-        for (let k = j + 1; k < n; k++) {
-            if (rating[k] > rating[j]) rightGreater++;
-            else rightSmaller++;
+        for (let k = i + 1; k < rating.length; k++) {
+            if (rating[k] < rating[i]) {
+                rs++
+            }
+            if (rating[k] > rating[i]) {
+                rl++
+            }
         }
 
-        // Increasing teams + Decreasing teams  
-        //leftSmaller cn paire with any rightGreater and leftGreter can pair with rightSmaller
-        count += leftSmaller * rightGreater + leftGreater * rightSmaller;
+        result += (ls * rl) + (rs * ll)
     }
 
-    return count;
+    return result;
 
 };
 

@@ -22,20 +22,25 @@ Problem url - https://leetcode.com/problems/binary-tree-maximum-path-sum/descrip
  */
 
 var maxPathSum = function (root) {
-    const res = { val: -Infinity }
+    let maxSum = -Infinity;   // global maximum
 
-    dfs(root, res)
-    return res.val
+    function dfs(node) {
+        if (!node) return 0;
+
+        // only take positive contributions (ignore negative subtrees)
+        let leftGain = Math.max(dfs(node.left), 0);
+        let rightGain = Math.max(dfs(node.right), 0);
+
+        // path through current node
+        let currentPath = node.val + leftGain + rightGain;
+
+        // update global max if needed
+        maxSum = Math.max(maxSum, currentPath);
+
+        // return max gain to parent (choose one side)
+        return node.val + Math.max(leftGain, rightGain);
+    }
+
+    dfs(root);
+    return maxSum;
 };
-
-function dfs(root, ans) {
-    if (!root) return 0;
-
-    const left = dfs(root.left, ans)
-    const right = dfs(root.right, ans)
-
-    const maxVal = Math.max(root.val, root.val + left, root.val + right)
-    ans.val = Math.max(ans.val, maxVal, root.val + left + right)
-
-    return maxVal
-}

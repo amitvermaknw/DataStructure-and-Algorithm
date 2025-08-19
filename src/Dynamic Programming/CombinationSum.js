@@ -27,24 +27,25 @@ Input: candidates = [2], target = 1
 Output: []
  */
 
-var combinationSum = function (candidates, target) {
-    let res = [];
+/**using backtrack  */
 
-    const dfs = (i, cur, total) => {
+function combinationsSumBacktrack(candidate, target) {
+    let res = []
+
+    function backtrack(start, path, total) {
         if (total === target) {
-            res.push([...cur]);
-            return;
+            res.push([...path])
         }
 
-        if (i >= candidates.length || total > target)
-            return;
+        if (total > target) return;
 
-        cur.push(candidates[i]);
-        dfs(i, cur, total + candidates[i]);
-        cur.pop();
-        dfs(i + 1, cur, total);
+        for (let i = start; i < candidate.length; i++) {
+            path.push(candidate[i])
+            backtrack(i, path, total + candidate[i])
+            path.pop()
+        }
     }
 
-    dfs(0, [], 0);
-    return res;
-};
+    backtrack(0, [], 0)
+    return res
+}

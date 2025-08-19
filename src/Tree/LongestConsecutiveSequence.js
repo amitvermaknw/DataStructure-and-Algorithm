@@ -9,23 +9,26 @@ class Node {
 }
 
 let maxLen = 0;
-let currentLen = 0;
 
-function searchLongestConsecutiveSquence(root, currentLen, expected) {
-    if (root === null) {
-        return
+function longestConsecutive(root) {
+    function dfs(node, currentLen, expected) {
+        if (!node) return;
+
+        if (node.val === expected) {
+            currentLen++;
+        } else {
+            currentLen = 1;
+        }
+
+        maxLen = Math.max(maxLen, currentLen);
+
+        dfs(node.left, currentLen, node.val + 1);
+        dfs(node.right, currentLen, node.val + 1);
     }
 
-    if (root.data == expected) {
-        currentLen++;
-    } else {
-        currentLen = 1;
-    }
-
-    maxLen = Math.max(maxLen, currentLen)
-    searchLongestConsecutiveSquence(root.left, currentLen, root.data + 1);
-    searchLongestConsecutiveSquence(root.right, currentLen, root.data + 1);
-};
+    dfs(root, 0, root.val);
+    return maxLen;
+}
 
 // const rootNode = new Node(1);
 // rootNode.left = new Node(2);

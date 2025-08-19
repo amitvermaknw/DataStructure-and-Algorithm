@@ -35,7 +35,8 @@ var helper = (nums) => {
     return rob2;
 }
 var rob = function (nums) {
+    if (nums.length === 1) return nums[0]
     //nums.slice(1, nums.length) - Skip the first value from array
     //nums.slice(0, nums.length-1) - skip the last value from array
-    return Math.max(nums[0], helper(nums.slice(1, nums.length)), helper(nums.slice(0, nums.length - 1)));
+    return Math.max(helper(nums.slice(1, nums.length)), helper(nums.slice(0, nums.length - 1))); //since you can rob one of the house, that is why we are checking for both
 }

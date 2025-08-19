@@ -20,6 +20,24 @@ Input: s = "catsandog", wordDict = ["cats","dog","sand","and","cat"]
 Output: false
  */
 
+function wordBreakRecursion(s, wordDict) {
+    let wordSet = new Set(wordDict)
+
+    function backtrack(start) {
+        if (start === s.length) return true
+
+        for (let end = start + 1; end <= s.length; end++) {
+            let word = s.slice(start, end)
+
+            if (wordSet.has(word) && backtrack(end)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    backtrack(0)
+}
+
 var wordBreak = function (s, wordDict) {
     let dp = new Array(s.length + 1).fill(false);
     dp[s.length] = true;

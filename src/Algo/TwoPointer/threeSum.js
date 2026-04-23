@@ -48,3 +48,25 @@ function threeSum(nums) {
 
     return res;
 }
+
+
+// nums.sort()
+// res = set()
+
+// for i in range(len(nums) - 2):
+//     if i > 0 and nums[i] == nums[i - 1]:
+// continue
+// left = i + 1
+// right = len(nums) - 1
+
+// while left < right:
+//     add = nums[i] + nums[left] + nums[right]
+// if add < 0:
+//     left += 1
+//                 elif add > 0:
+// right -= 1
+//                 else:
+// res.add((nums[i], nums[left], nums[right]))
+// left += 1
+// right -= 1
+// return [list(x) for x in res]

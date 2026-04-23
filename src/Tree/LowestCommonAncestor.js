@@ -39,3 +39,16 @@ var lowestCommonAncestorSol = function (root, p, q) {
 
     return left ? left : right;
 };
+
+/**
+ * def lowest_common_ancestor(root, p, q):
+    current = root
+    
+    while current:
+        if p.val < current.val and q.val < current.val:
+            current = current.left
+        elif p.val > current.val and q.val > current.val:
+            current = current.right
+        else:
+            return current
+ */

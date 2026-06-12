@@ -18,7 +18,7 @@ startLogging()
 process.stdin.on('data', (chunk) => {
     const command = chunk.toString().trim()
 
-    if (command === 'start') {
+    if (command === 'stop') {
         clearInterval(timer)
         console.log('stopped')
     } else if (command === 'start') {

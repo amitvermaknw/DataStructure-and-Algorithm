@@ -26,3 +26,28 @@ for (let i = 0; i < pool_size; i++) {
     })
 
 }
+
+//For worker thread external library
+import Piscina from 'piscina'
+
+const pool = new Piscina({
+    filename: 'transform.worker.js',
+    maxThreads: 4
+})
+
+
+/**
+ * Worker child
+ */
+
+import { parentPort, workerData, isMainThread } from 'node:worker_threads';
+
+if (isMainThread) {
+    return ('worker must not run on in main')
+}
+
+parentPort.on('message', ({ taskid, value }) => {
+    const result = heaveyProcess(value)
+
+    parentPort.postMessage({ taskId, result })
+})

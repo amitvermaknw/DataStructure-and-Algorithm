@@ -21,7 +21,7 @@ setTimeout(() => {
 }, 3000);
 
 setTimeout(() => {
-    child.send({ command: start })
+    child.send({ command: 'start' })
 }, 5000)
 
 setTimeout(() => {

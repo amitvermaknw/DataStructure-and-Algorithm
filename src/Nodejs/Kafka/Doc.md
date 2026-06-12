@@ -140,3 +140,22 @@ Partitions assigned to Consumers (running inside pods)
 
 
 ### If that instance crashes before committing the offset, Kafka triggers a rebalance — another instance takes over that partition and re-reads from the last committed offset. This means the message gets reprocessed.
+
+
+### How pipe() Handles Backpressure Automatically
+
+ReadStream reads chunk (64KB)
+        ↓
+pipe() calls writable.write(chunk)
+        ↓
+write() returns false? (consumer is slow / buffer full)
+        ↓
+pipe() automatically pauses the readable ← THIS is backpressure
+        ↓
+writable drains its buffer
+        ↓
+emits 'drain' event
+        ↓
+pipe() resumes readable
+        ↓
+next chunk flows

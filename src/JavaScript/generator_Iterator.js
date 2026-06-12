@@ -20,7 +20,7 @@ console.log(gen.throw(new Error('Hi'))) //throw the error
 function* generator(arr) {
 
     for (let i = 0; i < arr.length; i++) {
-        yield [arr[i]]
+        yield arr[i]
     }
 }
 

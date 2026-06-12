@@ -25,10 +25,10 @@ after the third jump, at position 10 + 30 + 30 + 30 = 100
  */
 
 function solution(X, Y, D) {
-    let distance = Math.floor((Y - X) / D);
-    if (X + distance * D >= Y) {
-        return distance;
+    let steps = Math.floor((Y - X) / D);
+    if (X + steps * D >= Y) {
+        return steps;
     } else {
-        return distance + 1;
+        return steps + 1;
     }
 }
